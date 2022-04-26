@@ -43,7 +43,7 @@
 
 
 
-.container {
+.containerr {
   display: flex;
 }
 
@@ -53,8 +53,9 @@
   background-color: #242424;
   height: 100vh;
   width: 72px;
-  gap: 10px;
   align-items: center;
+  padding: 20px;
+
 }
 
 .server{
@@ -62,6 +63,7 @@
   height: 50px;
   width: 50px;
   border-radius: 50%;
+  border-style: none;
 }
 
 .sidebar{
