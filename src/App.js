@@ -31,7 +31,7 @@ function App() {
 
   if (loggedIn === true) {
     return (
-      <div className='container'>
+      <div className='containerr'>
         <Nav />
         <Sidebar />
         <Main />
