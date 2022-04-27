@@ -8,6 +8,5 @@ export function Sidebar() {
                 <h3>Server Name</h3>
             </div>
         </div>
-
     )
 }
