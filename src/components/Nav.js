@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { getData } from "../utils/data";
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { useGlobalState } from "../context/GlobalState";
+
 
 export function Nav() {
     const [servers, setServers] = useState([]);
+    const [ state, dispatch ] = useGlobalState();
+
     useEffect(() => {
         getData("http://localhost:8000/api/servers/")
             .then(data => setServers(data))
@@ -11,7 +15,9 @@ export function Nav() {
     return (
         <div className="servers">
             {console.log(servers)}
-            {servers.map(server => <Server name={server.name} id={server.id} />)}
+            {servers
+                .filter(server => server.users.includes(state.currentUser.user_id))
+                .map(server => <Server name={server.name} id={server.id} />)}
         </div>
     )
 
