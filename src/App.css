@@ -140,13 +140,6 @@ h5{
 }
 
 .red{
-  border-color: red;
-  /* border-width: 10px; */
-  border-style: solid;
-}
-
-.green{
-  border-color: green;
-  /* border-width: 10px; */
-  border-style: solid;
+  color: red;
+  visibility: visible !important;
 }

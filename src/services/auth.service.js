@@ -20,7 +20,12 @@ class AuthService {
         password
       }
     })
-
+    try{
+      console.log(resp.data.access)
+    }
+    catch {
+      return true
+    }
     if (resp.data.access) {
       return this.setToken(resp)
     }
