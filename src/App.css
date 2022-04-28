@@ -18,14 +18,14 @@
   width: 50vw;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  /* gap: 5px; */
+  gap: 30px;
   /* filter: drop-shadow(0 0 2rem rgb(255, 45, 21)); */
 }
 
 .login-height{
-  height: 40px;
+  height: 60px;
   font-size: 30px;
 }
 
@@ -36,7 +36,9 @@
 }
 
 .login-button{
+  color: white;
   width: 50%;
+  height: 60px;
   background-color: rgb(143, 30, 213);
   border: none;
 }
@@ -128,7 +130,8 @@ button:hover {
 }
 
 a {
-  color: white
+  color: rgb(45, 149, 252) !important;
+  text-decoration: none !important;
 }
 
 h5{
