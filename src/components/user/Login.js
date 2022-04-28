@@ -1,11 +1,11 @@
 import React, { useState } from "react"
 import AuthService from "../../services/auth.service";
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { useGlobalState } from "../../context/GlobalState";
 import jwtDecode from "jwt-decode";
 
 const Login = () => {
-  // let navigate = useNavigate();
+  let navigate = useNavigate();
 
   const [state, dispatch] = useGlobalState();
   const [failedLogin, setFailedLogin] = useState(false);
@@ -27,8 +27,8 @@ const Login = () => {
             currentUserToken: resp.access,
             currentUser: data
           })
-          // navigate('')
           window.location.reload()
+          // navigate("/")
         }
       });
   }
