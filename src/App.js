@@ -11,10 +11,10 @@ import Login from './components/user/Login';
 function App() {
   if (localStorage.getItem("user") === null) {
     return (
-      <GlobalProvider>
+      <>
         <Login />
         <Outlet />
-      </GlobalProvider>
+      </>
     );
   } else {
     return (
