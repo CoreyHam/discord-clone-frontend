@@ -68,6 +68,57 @@
   border-style: none;
 }
 
+.add-server-btn{
+  background-color: #3c3c3c;
+  color: #45a33c;
+}
+
+.add-server-btn:hover{
+  background-color: #45a33c;
+  color: white;
+}
+
+.screen-dimmer{
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  display: none;
+}
+
+.add-server-popup{
+  background-color: rgb(177, 177, 177);
+  width: 50vw;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 2;
+}
+
+.add-server-btn-container{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.add-server-popup-btn {
+  background-color: #3c3c3c;
+  color: #ffffff;
+  border-style: none;
+  height: 50px;
+  width: 100px;
+  border-radius: 25px;
+}
+
 .sidebar{
   background-color: #3c3c3c;
   height: 100vh;
