@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getData } from "../utils/data";
+// import { getData } from "../utils/data";
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { useGlobalState } from "../context/GlobalState";
 import request from '../services/api.request'
@@ -7,7 +7,7 @@ import request from '../services/api.request'
 
 export function Nav() {
     const [servers, setServers] = useState([]);
-    const [state, dispatch] = useGlobalState();
+    const [state] = useGlobalState();
     let user = state.currentUser.user_id
 
     function handleBackClick(e) {
@@ -19,7 +19,7 @@ export function Nav() {
         let serverName = document.querySelector('.server-name').value;
         console.log(serverName);
         if (serverName) {
-            postServer(serverName, user, created_by)
+            postServer()
         }
     }
 
@@ -38,15 +38,14 @@ export function Nav() {
             setServers(response.data)
         }
         getServers()
-    }, []);
+    }, [user]);
 
-    async function postServer(e) {
-        e.preventDefault();
+    async function postServer() {
         let serverName = document.querySelector('.server-name').value;
         let options = {
             method: 'POST',
-            url: `http://localhost:8000/api/server`,
-            data: { name: serverName, user_id: user, created_by: user }
+            url: `http://localhost:8000/api/servers/`,
+            data: { name: serverName, users: [user], created_by: user }
         }
         let response = await request(options)
         setServers(response.data)
