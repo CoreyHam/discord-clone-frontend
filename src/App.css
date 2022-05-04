@@ -47,6 +47,8 @@
 
 .containerr {
   display: flex;
+  min-width: 100%;
+  overflow: hidden;
 }
 
 .servers{

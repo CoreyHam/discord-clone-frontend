@@ -8,13 +8,12 @@ import request from '../services/api.request'
 export function Nav() {
     const [servers, setServers] = useState([]);
     const [state, dispatch] = useGlobalState();
-    let server = state.server
-    console.log("this is the server", server)
     let user = state.currentUser.user_id
 
     function handleBackClick(e) {
         e.preventDefault();
         document.querySelector('.screen-dimmer').style.display = 'none';
+        document.querySelector('.server-name').value = '';
     }
     function handleAddServerClick(e) {
         e.preventDefault();
@@ -22,6 +21,8 @@ export function Nav() {
         console.log(serverName);
         if (serverName) {
             postServer()
+            document.querySelector('.screen-dimmer').style.display = 'none';
+            document.querySelector('.server-name').value = '';
         }
     }
 
@@ -47,7 +48,7 @@ export function Nav() {
             data: { name: serverName, users: [user], created_by: user }
         }
         let response = await request(options)
-        setServers(response.data)
+        setServers([...servers, response.data])
     }
 
     return (
@@ -75,7 +76,7 @@ export function Nav() {
                 {/* {console.log(servers)} */}
                 {servers
                     // .filter(server => server.users.includes(state.currentUser.user_id))
-                    .map(server => <Server name={server.name} id={server.id} />)}
+                    .map(server => <Server name={server.name} id={server.id} key={server.id} />)}
                 <AddServer />
             </div>
         </>
@@ -88,7 +89,7 @@ const Server = ({ name, id }) => {
 
     function getChannels(e) {
         e.preventDefault();
-        console.log(e.target.id)
+        // console.log(e.target.id)
         dispatch({ server_id: e.target.id, server_name: name})
     }
     const renderTooltip = (props) => (

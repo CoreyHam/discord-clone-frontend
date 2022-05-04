@@ -28,13 +28,12 @@ export function Sidebar() {
         <div className="sidebar">
             <div className="topper">
                 <h3>{server_name}</h3>
-                {console.log(channels)}
+                {/* {console.log(state)} */}
             </div>
             <div className="channels">
-                {console.log("HERES THE CHANNELS", channels)}
+                {/* {console.log("HERES THE CHANNELS", channels)} */}
                 {channels
-                    // .filter(server => server.users.includes(state.currentUser.user_id))
-                    .map(channels => <Channel channel={channels.name} channel_id={channels.id} channel_description={channels.description} />)}
+                    .map(channels => <Channel channel={channels.name} channel_id={channels.id} channel_description={channels.description} key={channels.id} />)}
             </div>
         </div>
     )
@@ -45,9 +44,8 @@ function Channel({ channel, channel_id, channel_description }) {
 
     function handleClick(e) {
         e.preventDefault();
-        console.log(channel_id)
+        // console.log(channel_id)
         dispatch({ channel_id: channel_id, channel_name: channel, channel_description: channel_description })
-        // dispatch({ type: 'SET_CURRENT_CHANNEL', payload: channel })
     }
     let name = channel
     return (

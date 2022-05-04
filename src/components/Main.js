@@ -5,12 +5,12 @@ import { useGlobalState } from "../context/GlobalState";
 
 export function Main() {
     const [messages, setMessage] = useState([]);
-    const [state] = useGlobalState();
-    let server = state.server
+    const [state, dispatch] = useGlobalState();
+    let server = state.server_id
     let channel = state.channel_id
     let channel_name = state.channel_name
     let channel_description = state.channel_description
-    console.log(state.currentUser)
+    // console.log(state.currentUser)
     useEffect(() => {
         async function getMessage() {
             let options = {
@@ -24,12 +24,21 @@ export function Main() {
         getMessage()
     }, [channel]);
 
+    console.log(channel)
+    useEffect(() => {
+        console.log("Before clear")
+        setMessage([])
+        dispatch({channel_id: null, channel_name: null, channel_description: null})
+        console.log("After clear")
+    }
+        , [server])
+
     async function postMessage() {
         let content = document.querySelector('.message-input').value;
         let options = {
             method: 'POST',
             url: `http://localhost:8000/api/post-messages/`,
-            data: { content: content, channel: channel, sent_by: state.currentUser.user_id}
+            data: { content: content, channel: channel, sent_by: state.currentUser.user_id }
         }
         let response = await request(options)
         setMessage([...messages, response.data])
@@ -40,13 +49,13 @@ export function Main() {
         <div className="main">
             <div className="topper">
                 <h3>{`${channel_name} |`}</h3> <h4>{`  ${channel_description}`}</h4>
-                {console.log("THIS IS THE MESSAGES", messages)}
+                {/* {console.log("THIS IS THE MESSAGES", messages)} */}
             </div>
             <div className="lower">
                 <div className="chat">
                     <div className="messages">
                         {messages
-                            .map(messages => <Message user={messages.sent_by.username} message={messages.content} time={messages.created_at} />)}
+                            .map(messages => <Message user={messages.sent_by.username} message={messages.content} time={messages.created_at} key={messages.id} />)}
                     </div>
                     <Input postMessage={postMessage} />
                 </div>
@@ -72,10 +81,10 @@ function Message({ message, time, user }) {
 
 function Input({ postMessage }) {
 
-    function testFunction(e){
-        console.log("test")
+    function testFunction(e) {
+        // console.log("test")
         if (e.code === 'Enter' && e.shiftKey === false && document.querySelector('.message-input').value) {
-            console.log('Enter was pressed and the message was', document.querySelector('.message-input').value);
+            // console.log('Enter was pressed and the message was', document.querySelector('.message-input').value);
             postMessage()
         }
     }
