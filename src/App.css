@@ -190,7 +190,38 @@ h5{
   padding: none;
 }
 
+h3{
+  color: white;
+}
+
 .red{
   color: red;
   visibility: visible !important;
+}
+
+.channels{
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* gap: 30px; */
+}
+
+.channel{
+  background-color: rgba(255, 255, 255, 0);
+  border-style: none;
+  width: 80%;
+}
+.channel:hover{
+  background-color: rgba(255, 255, 255, 0.24);
+}
+
+.messages{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.message{
+  color:white
 }

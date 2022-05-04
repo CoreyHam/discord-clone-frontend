@@ -7,7 +7,9 @@ import request from '../services/api.request'
 
 export function Nav() {
     const [servers, setServers] = useState([]);
-    const [state] = useGlobalState();
+    const [state, dispatch] = useGlobalState();
+    let server = state.server
+    console.log("this is the server", server)
     let user = state.currentUser.user_id
 
     function handleBackClick(e) {
@@ -22,9 +24,6 @@ export function Nav() {
             postServer()
         }
     }
-
-
-
 
     useEffect(() => {
         // getData(`http://127.0.0.1:8000/api/servers/?users=${user}`)
@@ -73,7 +72,7 @@ export function Nav() {
                 </div>
             </div>
             <div className="servers">
-                {console.log(servers)}
+                {/* {console.log(servers)} */}
                 {servers
                     // .filter(server => server.users.includes(state.currentUser.user_id))
                     .map(server => <Server name={server.name} id={server.id} />)}
@@ -85,6 +84,13 @@ export function Nav() {
 }
 
 const Server = ({ name, id }) => {
+    const [state, dispatch] = useGlobalState();
+
+    function getChannels(e) {
+        e.preventDefault();
+        console.log(e.target.id)
+        dispatch({ server_id: e.target.id, server_name: name})
+    }
     const renderTooltip = (props) => (
         <Tooltip id="button-tooltip" {...props}>
             {name}
@@ -99,11 +105,14 @@ const Server = ({ name, id }) => {
                 overlay={renderTooltip}
             >
                 <button
+                    onClick={getChannels}
                     variant="success"
                     className="server"
                     style={{ backgroundColor: '#' + Math.floor(Math.random() * 16777215).toString(16) }}
+                    id={id}
                 >{name.charAt(0)}</button>
             </OverlayTrigger>
+            <br></br>
         </>
     )
 }
