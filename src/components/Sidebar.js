@@ -55,7 +55,7 @@ function Channel({ channel, channel_id, channel_description }) {
             className="channel"
             onClick={handleClick}>
 
-            <h4>{name}</h4>
+            <div className="channel-name">{name}</div>
         </button>
     )
 }
