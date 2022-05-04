@@ -10,12 +10,21 @@ export function Nav() {
     const [state, dispatch] = useGlobalState();
     let user = state.currentUser.user_id
 
-    function handleClick(e) {
+    function handleBackClick(e) {
         e.preventDefault();
-        // let serverName = e.target.elements.serverName.value;
-        let serverName = document.querySelector('.server-name').value;
-        console.log(serverName)
+        document.querySelector('.screen-dimmer').style.display = 'none';
     }
+    function handleAddServerClick(e) {
+        e.preventDefault();
+        let serverName = document.querySelector('.server-name').value;
+        console.log(serverName);
+        if (serverName) {
+            postServer(serverName, user, created_by)
+        }
+    }
+
+
+
 
     useEffect(() => {
         // getData(`http://127.0.0.1:8000/api/servers/?users=${user}`)
@@ -30,6 +39,19 @@ export function Nav() {
         }
         getServers()
     }, []);
+
+    async function postServer(e) {
+        e.preventDefault();
+        let serverName = document.querySelector('.server-name').value;
+        let options = {
+            method: 'POST',
+            url: `http://localhost:8000/api/server`,
+            data: { name: serverName, user_id: user, created_by: user }
+        }
+        let response = await request(options)
+        setServers(response.data)
+    }
+
     return (
         <>
             <div className="screen-dimmer">
@@ -39,11 +61,14 @@ export function Nav() {
                         className="server-name"
                         type="text" /></div>
                     <div className="add-server-btn-container">
-                        <button 
-                        className="add-server-popup-btn"
-                        onClick={handleClick}
+                        <button
+                            className="add-server-popup-btn"
+                            onClick={handleBackClick}
                         >Back</button>
-                        <button className="add-server-popup-btn">Create</button>
+                        <button
+                            className="add-server-popup-btn"
+                            onClick={handleAddServerClick}
+                        >Create</button>
                     </div>
 
                 </div>
