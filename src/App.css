@@ -167,6 +167,9 @@
   background-color: #4d4d4d;
   height: 10%;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
 }
 
 .active{
@@ -224,4 +227,14 @@ h3{
 
 .message{
   color:white
+}
+
+.message-input{
+  background-color: #5b5b5b;
+  padding: 10px;
+  height: 50%;
+  width: 90%;
+  border-style: none;
+  border-radius: 10px;
+  color: white;
 }

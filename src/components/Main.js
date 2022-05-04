@@ -5,7 +5,7 @@ import { useGlobalState } from "../context/GlobalState";
 
 export function Main() {
     const [messages, setMessages] = useState([]);
-    const [ state, dispatch ] = useGlobalState();
+    const [ state ] = useGlobalState();
     let channel = state.channel_id
     let channel_name = state.channel_name
     let channel_description = state.channel_description
@@ -35,7 +35,9 @@ export function Main() {
                     {messages
                     .map(messages => <Message user={messages.sent_by.username} message={messages.content} time={messages.created_at} />)}
                     </div>
-                    <div className="input"></div>
+                    <div className="input">
+                        <input type="text" placeholder="Type a message..." className="message-input" />
+                    </div>
                 </div>
                 <div className="active"></div>
             </div>
