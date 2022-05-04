@@ -154,12 +154,13 @@
 .chat{
   background-color: #37e3db;
   height: 100%;
+  max-height: 100vh;
   width: 100%;
 }
 
 .messages{
   background-color: #4d4d4d;
-  height: 90%;
+  height: 85.2vh;
   width: 100%;
 }
 
@@ -197,6 +198,10 @@ h3{
   color: white;
 }
 
+b{
+  color: rgb(224, 19, 19);
+}
+
 .red{
   color: red;
   visibility: visible !important;
@@ -206,14 +211,17 @@ h3{
   padding-top: 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  /* gap: 30px; */
+  align-items: left;
+  padding: 10px;
+  text-align: left;
+  gap: 10px;
 }
 
 .channel{
   background-color: rgba(255, 255, 255, 0);
   border-style: none;
   width: 80%;
+  text-align: left;
 }
 .channel:hover{
   background-color: rgba(255, 255, 255, 0.24);
@@ -223,6 +231,8 @@ h3{
   display: flex;
   flex-direction: column;
   gap: 20px;
+  overflow-y: scroll;
+  padding: 20px;
 }
 
 .message{
@@ -237,4 +247,33 @@ h3{
   border-style: none;
   border-radius: 10px;
   color: white;
+}
+
+.message-header{
+  color: rgb(169, 169, 169);
+}
+
+.channel-name{
+  color: white;
+  font-size: 20px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #363636;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(38, 38, 38);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

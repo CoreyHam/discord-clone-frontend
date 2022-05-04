@@ -7,7 +7,6 @@ import { API_URL, REFRESH_ENDPOINT } from './auth.constants';
  */
 const client = axios.create({
   baseURL: API_URL,
-  headers: authHeader(),
 });
 
 client.interceptors.response.use(
@@ -68,14 +67,19 @@ client.interceptors.response.use(
 /**
  * Request Wrapper with default success/error actions
  */
-const request = async (options) => {
+const request = async (opts) => {
+  let options = {
+    ...opts,
+    headers: authHeader(),
+  }
+  
   const onSuccess = (response) => {
     console.debug('Request Successful!', response);
     return response;
   }
 
   const onError = (error) => {
-    console.error('Request Failed:', error);
+    console.error('Request Failed:', error.config);
 
     if (error.response) {
       // Request was made but server responded with something
@@ -95,9 +99,7 @@ const request = async (options) => {
 
   return await client(options)
     .then(onSuccess)
-    .catch((e)=>{
-      // console.log(e)
-    });
+    .catch(onError);
 }
 
 export default request;
