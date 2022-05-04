@@ -15,6 +15,7 @@ export function Nav() {
     function handleBackClick(e) {
         e.preventDefault();
         document.querySelector('.screen-dimmer').style.display = 'none';
+        document.querySelector('.server-name').value = '';
     }
     function handleAddServerClick(e) {
         e.preventDefault();
@@ -22,6 +23,8 @@ export function Nav() {
         console.log(serverName);
         if (serverName) {
             postServer()
+            document.querySelector('.screen-dimmer').style.display = 'none';
+            document.querySelector('.server-name').value = '';
         }
     }
 
@@ -47,7 +50,7 @@ export function Nav() {
             data: { name: serverName, users: [user], created_by: user }
         }
         let response = await request(options)
-        setServers(response.data)
+        setServers([...servers, response.data])
     }
 
     return (
