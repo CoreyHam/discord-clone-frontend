@@ -3,7 +3,7 @@ import { useGlobalState } from "../context/GlobalState";
 
 function NavBar() {
   const [ state, dispatch ] = useGlobalState();
-
+  
   return (
     <nav>
       <ul style={{ display: "flex", flexFlow: "row nowrap", justifyContent: "space-evenly", listStyle: 'none' }}>
