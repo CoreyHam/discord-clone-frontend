@@ -19,7 +19,7 @@ const Login = () => {
     AuthService
       .login(username, password)
       .then(async (resp) => {
-        if (resp == true) {
+        if (resp === true) {
           setFailedLogin(true)
         } else {
           let data = jwtDecode(resp.access)
