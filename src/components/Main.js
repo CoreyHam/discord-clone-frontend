@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import request from '../services/api.request'
 import { useGlobalState } from "../context/GlobalState";
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 
 export function Main() {
@@ -74,7 +76,7 @@ function Message({ message, time, user }) {
     return (
         <div className="message">
             <div className="message-header"><b>{user}</b> {time}</div>
-            {message}
+            <ReactMarkdown children={message} remarkPlugins={[remarkGfm]} />
         </div>
     )
 }
