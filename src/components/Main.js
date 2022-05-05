@@ -3,6 +3,7 @@ import request from '../services/api.request'
 import { useGlobalState } from "../context/GlobalState";
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import { CurrentUsers } from "./CurrentUsers";
 
 
 export function Main() {
@@ -61,7 +62,9 @@ export function Main() {
                     </div>
                     <Input postMessage={postMessage} />
                 </div>
-                <div className="active"></div>
+                <div className="active">
+                    <CurrentUsers />
+                </div>
             </div>
         </div>
     );
