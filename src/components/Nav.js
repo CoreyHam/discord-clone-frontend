@@ -36,6 +36,7 @@ export function Nav() {
             }
             let response = await request(options)
             setServers(response.data)
+            
         }
         getServers()
     }, [user]);
@@ -90,7 +91,8 @@ const Server = ({ name, id }) => {
     function getChannels(e) {
         e.preventDefault();
         // console.log(e.target.id)
-        dispatch({ server_id: e.target.id, server_name: name})
+        dispatch({ server_id: e.target.id, server_name: name,})
+        
     }
     const renderTooltip = (props) => (
         <Tooltip id="button-tooltip" {...props}>
