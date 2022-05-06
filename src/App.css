@@ -14,13 +14,14 @@
 .login-container{
   color: white;
   background-color: rgb(49, 49, 49);
-  height: 60vh;
+  height: 60%;
   width: 50vw;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   gap: 30px;
+  padding: 2em;
   /* filter: drop-shadow(0 0 2rem rgb(255, 45, 21)); */
 }
 
@@ -41,6 +42,10 @@
   height: 60px;
   background-color: rgb(143, 30, 213);
   border: none;
+}
+
+.login-button:disabled{
+  background-color: rgb(143, 30, 213, 0.5);
 }
 
 
