@@ -112,7 +112,8 @@ const Server = ({ name, id }) => {
                     onClick={getChannels}
                     variant="success"
                     className="server"
-                    style={{ backgroundColor: '#' + Math.floor(Math.random() * 16777215).toString(16) }}
+                    // style={{ backgroundColor: '#' + Math.floor(Math.random() * 16777215).toString(16) }}
+                    style={{ backgroundColor: 'red' }}
                     id={id}
                 >{name.charAt(0)}</button>
             </OverlayTrigger>
