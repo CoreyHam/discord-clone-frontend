@@ -20,7 +20,7 @@ export function Nav() {
         let serverName = document.querySelector('.server-name').value;
         console.log(serverName);
         if (serverName) {
-            postServer()
+            postServer( )
             document.querySelector('.screen-dimmer').style.display = 'none';
             document.querySelector('.server-name').value = '';
         }
@@ -45,10 +45,11 @@ export function Nav() {
         let serverName = document.querySelector('.server-name').value;
         let options = {
             method: 'POST',
-            url: `http://localhost:8000/api/servers/`,
+            url: `http://localhost:8000/api/post-servers/`,
             data: { name: serverName, users: [user], created_by: user }
         }
         let response = await request(options)
+        console.log("heres the user that is making the server!", user)
         setServers([...servers, response.data])
     }
 

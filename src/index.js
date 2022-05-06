@@ -20,9 +20,9 @@ root.render(
     <GlobalProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<App />}>
-            <Route path="login" element={<Login />} />
+          <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
+          <Route path="/" element={<App />}>
             <Route path="profile" element={<Profile />} />
           </Route>
         </Routes>

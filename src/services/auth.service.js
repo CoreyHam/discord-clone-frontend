@@ -39,8 +39,6 @@ class AuthService {
     username,
     email,
     password,
-    firstName,
-    lastName
   }) {
     await request({
       url: REGISTER_ENDPOINT,
@@ -49,8 +47,6 @@ class AuthService {
         username,
         email,
         password,
-        first_name: firstName,
-        last_name: lastName,
       }
     })
     .then(() => {

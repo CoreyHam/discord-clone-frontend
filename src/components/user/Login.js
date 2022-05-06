@@ -1,13 +1,13 @@
 import React, { useState } from "react"
 import AuthService from "../../services/auth.service";
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useGlobalState } from "../../context/GlobalState";
 import jwtDecode from "jwt-decode";
 
 const Login = () => {
-  // let navigate = useNavigate();
+  let navigate = useNavigate();
 
-  const [ dispatch] = useGlobalState();
+  const [state, dispatch] = useGlobalState();
   const [failedLogin, setFailedLogin] = useState(false);
 
   const [username, setUsername] = useState("");
@@ -27,13 +27,16 @@ const Login = () => {
             currentUserToken: resp.access,
             currentUser: data
           })
-          window.location.reload()
-          // navigate("/")
+          navigate("/")
         }
       });
   }
   let color = ''
   failedLogin ? color = 'red' : color = ''
+  function handleRegister() {
+    navigate("/register")
+  }
+
   return (
     <div className="login-bg">
       <div className="c-form">
@@ -69,7 +72,7 @@ const Login = () => {
             type="submit"
             value="Login"
           />
-          <div>Need an account? <a>Register</a></div>
+          <div>Need an account? <a href="javascript:" onClick={handleRegister} >Register</a></div>
         </form>
       </div>
     </div>
