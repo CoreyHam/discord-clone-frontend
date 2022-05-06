@@ -22,7 +22,7 @@ export function CurrentUsers() {
     // console.log("This is USERS: ", users.users[0].username)
     return (
         <div className="current-users">
-            <h3>USERS - {users.length}</h3>
+            <div className="user-name channel-name">USERS - {users.length}</div>
             {/* {console.log("HERES THE USERS", users)} */}
             {users.map(user => <User user={user.username} key={user.id} />)}
         </div>
@@ -33,7 +33,7 @@ export function CurrentUsers() {
         return (
             <div className="user">
                 
-                <div className="user-name channel-name">{user}</div>
+                <h3>{user}</h3>
             </div>
         )
     }

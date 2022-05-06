@@ -50,10 +50,11 @@ export function Main() {
 
     return (
         <div className="main">
+            {channel_name ? 
             <div className="topper">
                 <h3>{`${channel_name} |`}</h3> <h4>{`  ${channel_description}`}</h4>
                 {/* {console.log("THIS IS THE MESSAGES", messages)} */}
-            </div>
+            </div> : <div className="topper"><h3> </h3></div>}
             <div className="lower">
                 <div className="chat">
                     <div className="messages">

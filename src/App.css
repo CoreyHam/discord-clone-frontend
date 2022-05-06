@@ -234,6 +234,17 @@ b{
   background-color: rgba(255, 255, 255, 0.24);
 }
 
+.add-channel{
+  background-color: #3c3c3c;
+  color: #45a33c;
+  border-style: none;
+}
+
+.add-channel:hover{
+  background-color: #45a33c;
+  color: white;
+}
+
 .messages{
   display: flex;
   flex-direction: column;
