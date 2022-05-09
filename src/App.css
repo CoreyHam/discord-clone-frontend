@@ -14,13 +14,14 @@
 .login-container{
   color: white;
   background-color: rgb(49, 49, 49);
-  height: 60vh;
+  height: 60%;
   width: 50vw;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   gap: 30px;
+  padding: 2em;
   /* filter: drop-shadow(0 0 2rem rgb(255, 45, 21)); */
 }
 
@@ -43,10 +44,16 @@
   border: none;
 }
 
+.login-button:disabled{
+  background-color: rgb(143, 30, 213, 0.5);
+}
+
 
 
 .containerr {
   display: flex;
+  min-width: 100%;
+  overflow: hidden;
 }
 
 .servers{
@@ -154,12 +161,13 @@
 .chat{
   background-color: #37e3db;
   height: 100%;
+  max-height: 100vh;
   width: 100%;
 }
 
 .messages{
   background-color: #4d4d4d;
-  height: 90%;
+  height: 85.2vh;
   width: 100%;
 }
 
@@ -167,6 +175,9 @@
   background-color: #4d4d4d;
   height: 10%;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
 }
 
 .active{
@@ -194,6 +205,10 @@ h3{
   color: white;
 }
 
+b{
+  color: rgb(224, 19, 19);
+}
+
 .red{
   color: red;
   visibility: visible !important;
@@ -203,25 +218,92 @@ h3{
   padding-top: 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  /* gap: 30px; */
+  align-items: left;
+  padding: 10px;
+  text-align: left;
+  gap: 10px;
 }
 
 .channel{
   background-color: rgba(255, 255, 255, 0);
   border-style: none;
   width: 80%;
+  text-align: left;
 }
 .channel:hover{
   background-color: rgba(255, 255, 255, 0.24);
+}
+
+.add-channel{
+  background-color: #3c3c3c;
+  color: #45a33c;
+  border-style: none;
+}
+
+.add-channel:hover{
+  background-color: #45a33c;
+  color: white;
+}
+
+.ch-screen-dimmer{
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  display: none;
 }
 
 .messages{
   display: flex;
   flex-direction: column;
   gap: 20px;
+  overflow-y: scroll;
+  padding: 20px;
 }
 
 .message{
   color:white
+}
+
+.message-input{
+  background-color: #5b5b5b;
+  padding: 10px;
+  height: 50%;
+  width: 90%;
+  border-style: none;
+  border-radius: 10px;
+  color: white;
+}
+
+.message-header{
+  color: rgb(169, 169, 169);
+}
+
+.channel-name{
+  color: white;
+  font-size: 20px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #363636;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(38, 38, 38);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

@@ -8,20 +8,21 @@ import request from '../services/api.request'
 export function Nav() {
     const [servers, setServers] = useState([]);
     const [state, dispatch] = useGlobalState();
-    let server = state.server
-    console.log("this is the server", server)
     let user = state.currentUser.user_id
 
     function handleBackClick(e) {
         e.preventDefault();
         document.querySelector('.screen-dimmer').style.display = 'none';
+        document.querySelector('.server-name').value = '';
     }
     function handleAddServerClick(e) {
         e.preventDefault();
         let serverName = document.querySelector('.server-name').value;
         console.log(serverName);
         if (serverName) {
-            postServer()
+            postServer( )
+            document.querySelector('.screen-dimmer').style.display = 'none';
+            document.querySelector('.server-name').value = '';
         }
     }
 
@@ -35,6 +36,7 @@ export function Nav() {
             }
             let response = await request(options)
             setServers(response.data)
+            
         }
         getServers()
     }, [user]);
@@ -43,11 +45,12 @@ export function Nav() {
         let serverName = document.querySelector('.server-name').value;
         let options = {
             method: 'POST',
-            url: `http://localhost:8000/api/servers/`,
+            url: `http://localhost:8000/api/post-servers/`,
             data: { name: serverName, users: [user], created_by: user }
         }
         let response = await request(options)
-        setServers(response.data)
+        console.log("heres the user that is making the server!", user)
+        setServers([...servers, response.data])
     }
 
     return (
@@ -75,7 +78,7 @@ export function Nav() {
                 {/* {console.log(servers)} */}
                 {servers
                     // .filter(server => server.users.includes(state.currentUser.user_id))
-                    .map(server => <Server name={server.name} id={server.id} />)}
+                    .map(server => <Server name={server.name} id={server.id} key={server.id} />)}
                 <AddServer />
             </div>
         </>
@@ -88,8 +91,9 @@ const Server = ({ name, id }) => {
 
     function getChannels(e) {
         e.preventDefault();
-        console.log(e.target.id)
-        dispatch({ server_id: e.target.id, server_name: name})
+        // console.log(e.target.id)
+        dispatch({ server_id: e.target.id, server_name: name,})
+        
     }
     const renderTooltip = (props) => (
         <Tooltip id="button-tooltip" {...props}>
@@ -108,7 +112,8 @@ const Server = ({ name, id }) => {
                     onClick={getChannels}
                     variant="success"
                     className="server"
-                    style={{ backgroundColor: '#' + Math.floor(Math.random() * 16777215).toString(16) }}
+                    // style={{ backgroundColor: '#' + Math.floor(Math.random() * 16777215).toString(16) }}
+                    style={{ backgroundColor: 'red' }}
                     id={id}
                 >{name.charAt(0)}</button>
             </OverlayTrigger>

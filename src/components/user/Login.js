@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import AuthService from "../../services/auth.service";
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useGlobalState } from "../../context/GlobalState";
 import jwtDecode from "jwt-decode";
 
@@ -19,7 +19,7 @@ const Login = () => {
     AuthService
       .login(username, password)
       .then(async (resp) => {
-        if (resp == true) {
+        if (resp === true) {
           setFailedLogin(true)
         } else {
           let data = jwtDecode(resp.access)
@@ -27,13 +27,16 @@ const Login = () => {
             currentUserToken: resp.access,
             currentUser: data
           })
-          window.location.reload()
-          // navigate("/")
+          navigate("/")
         }
       });
   }
   let color = ''
   failedLogin ? color = 'red' : color = ''
+  function handleRegister() {
+    navigate("/register")
+  }
+
   return (
     <div className="login-bg">
       <div className="c-form">
@@ -69,7 +72,7 @@ const Login = () => {
             type="submit"
             value="Login"
           />
-          <div>Need an account? <a>Register</a></div>
+          <div>Need an account? <a href="javascript:" onClick={handleRegister} >Register</a></div>
         </form>
       </div>
     </div>
