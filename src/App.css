@@ -245,6 +245,18 @@ b{
   color: white;
 }
 
+.ch-screen-dimmer{
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  display: none;
+}
+
 .messages{
   display: flex;
   flex-direction: column;
