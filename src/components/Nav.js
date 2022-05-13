@@ -32,7 +32,7 @@ export function Nav() {
         async function getServers() {
             let options = {
                 method: 'GET',
-                url: `http://localhost:8000/api/servers/?users=${user}`,
+                url: `servers/?users=${user}`,
             }
             let response = await request(options)
             setServers(response.data)
@@ -45,7 +45,7 @@ export function Nav() {
         let serverName = document.querySelector('.server-name').value;
         let options = {
             method: 'POST',
-            url: `http://localhost:8000/api/post-servers/`,
+            url: `post-servers/`,
             data: { name: serverName, users: [user], created_by: user }
         }
         let response = await request(options)

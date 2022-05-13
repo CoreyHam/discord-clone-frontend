@@ -40,7 +40,7 @@ export function Main() {
         let content = document.querySelector('.message-input').value;
         let options = {
             method: 'POST',
-            url: `http://localhost:8000/api/post-messages/`,
+            url: `post-messages/`,
             data: { content: content, channel: channel, sent_by: state.currentUser.user_id }
         }
         let response = await request(options)

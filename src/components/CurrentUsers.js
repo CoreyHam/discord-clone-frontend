@@ -12,7 +12,7 @@ export function CurrentUsers() {
         async function getMessage() {
             let options = {
                 method: 'GET',
-                url: `http://localhost:8000/api/servers/${server}/`,
+                url: `servers/${server}/`,
             }
             let response = await request(options)
             setUsers(response.data.users)

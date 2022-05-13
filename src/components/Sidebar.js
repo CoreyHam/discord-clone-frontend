@@ -12,7 +12,7 @@ export function Sidebar() {
         async function getChannels() {
             let options = {
                 method: 'GET',
-                url: `http://localhost:8000/api/channels/?server=${server}`,
+                url: `channels/?server=${server}`,
             }
             let response = await request(options)
             setChannels(response.data)
@@ -25,7 +25,7 @@ export function Sidebar() {
         let channelDescription = document.querySelector('.channel-description').value;
         let options = {
             method: 'POST',
-            url: `http://localhost:8000/api/channels/`,
+            url: `channels/`,
             data: { name: channelName, description: channelDescription, server: server }
         }
         let response = await request(options)
