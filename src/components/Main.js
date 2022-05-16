@@ -26,7 +26,7 @@ export function Main() {
         }
         getMessage()
     }, [channel]);
-
+    
     console.log(channel)
     useEffect(() => {
         console.log("Before clear")

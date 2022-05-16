@@ -74,7 +74,7 @@ export function Nav() {
 
                 </div>
             </div>
-            <div className="servers">
+            <div className="servers dark">
                 {/* {console.log(servers)} */}
                 {servers
                     // .filter(server => server.users.includes(state.currentUser.user_id))
@@ -111,9 +111,8 @@ const Server = ({ name, id }) => {
                 <button
                     onClick={getChannels}
                     variant="success"
-                    className="server"
+                    className="server sidebar-icon"
                     // style={{ backgroundColor: '#' + Math.floor(Math.random() * 16777215).toString(16) }}
-                    style={{ backgroundColor: 'red' }}
                     id={id}
                 >{name.charAt(0)}</button>
             </OverlayTrigger>
@@ -145,7 +144,7 @@ const AddServer = ({ id }) => {
             >
                 <button
                     variant="success"
-                    className="add-server-btn server"
+                    className="add-server-btn server sidebar-icon"
                     onClick={handleClick}
                 >{'+'}</button>
             </OverlayTrigger>

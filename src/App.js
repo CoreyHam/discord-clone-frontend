@@ -1,19 +1,17 @@
 import './App.css';
-import { Navigate, Outlet } from "react-router-dom";
-import { GlobalProvider } from './context/GlobalState';
-// import NavBar from './components/NavBar';
+import React from 'react';
+import { Navigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import { Nav } from './components/Nav'
 import { Sidebar } from './components/Sidebar'
 import { Main } from './components/Main'
-import Login from './components/user/Login';
-import Register from './components/user/Register';
-import { useNavigate } from 'react-router-dom';
 import AuthService from './services/auth.service';
 
 
 
 function App() {
   let navigate = useNavigate();
+  const loggedInUser = localStorage.getItem('user');
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -21,9 +19,7 @@ function App() {
     navigate('/login');
   }
 
-  if (localStorage.getItem("user") === null) {
-    navigate("/login")
-  } else {
+  if (loggedInUser) {
     return (
       <div className='containerr'>
         <button onClick={handleLogout} className='logout'>logout</button>
@@ -32,7 +28,10 @@ function App() {
         <Main />
       </div>
     );
-  }
+  } else {
+    return (
+        <Navigate to='/login' />
+  );}
 }
-export default App;
 
+export default App;
